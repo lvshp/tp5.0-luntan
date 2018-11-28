@@ -1,0 +1,361 @@
+::-webkit-scrollbar {
+	width: 10px;
+	height: 10px;
+	background: rgba(0,0,0,0.1);
+}
+::-webkit-scrollbar-track {
+	background: rgba(0,0,0,0.1) ! important;
+}
+::-webkit-scrollbar-thumb {
+	background: #D3493B;
+	border-radius: 8px;
+	margin-left: 2px;
+	margin-right: 2px;
+}
+a {
+	color: #D3493B;
+	text-decoration: none;
+	cursor: pointer;
+}
+a:hover {
+	color: #822219;
+	text-decoration: none ! important;
+}
+* {
+	transition-duration: 0.5s;
+}
+body {
+	min-height: 100%;
+	font-weight: 100;
+	font-family: '微软雅黑',-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif ! important;
+	background-color: #F1F1F1;
+}
+.container {
+	min-height: 100%;
+	box-shadow: 0px 0px 16px rgba(0,0,0,0.35);
+	min-height: 1024;
+	background-color: #FFF;
+}
+.container:after {
+　　content: "";
+　　visibility: hidden;
+　　display: block;
+　　clear: both;
+　　height: 0px;
+}
+.topbar {
+	/*background: rgba(255, 155, 178, 0.85);*/
+	background-image: url(/image/banner.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: bottom;
+}
+.topbar .logo {
+	padding-left: 48px;
+	padding-top: 120px;
+	padding-bottom: 28px;
+	color: #000;
+}
+.topbar .logo .name {
+	font-size: 48px;
+}
+.topbar .logo .description {
+	margin-left: 16px;
+	font-size: 20px;
+}
+.topbar .menu {
+	width: 100%;
+	height: 45px;
+	border-top: 1px solid rgba(0,0,0,0.1);
+	border-bottom: 1px solid rgba(0,0,0,0.1);
+	background: rgb(66,66,66);
+}
+.topbar .menu .item {
+	display: inline-block;
+	line-height: 44px;
+}
+.topbar .menu .item:hover {
+	background: rgba(0,0,0,0.2);
+}
+.topbar .menu .item a {
+	display: block;
+	height: 100%;
+	color: #FFF;
+	text-decoration: none;
+	padding-left: 32px;
+	padding-right: 32px;
+}
+.headimg {
+	border-radius: 50%;
+}
+.my {
+	width: 60%;
+	margin: 0 auto;
+	display: block;
+	margin: 16px;
+	max-width: 220px;
+	min-width: 128px;
+	margin-top: 48px;
+	box-shadow: 0px 0px 16px rgba(0,0,0,0.75);
+}
+.box {
+	min-height: calc(100% - 179);
+}
+.post-box {
+    padding: 16px 20px 24px 20px;
+    border-bottom: 1px solid rgba(0,0,0,0.07);
+	cursor: pointer;
+	border-left: 0px solid rgba(66, 66, 66, 0.85);
+	transition-duration: 0.3s;
+}
+.post-box:hover {
+	transition-duration: 0.3s;
+	border-left: 5px solid rgba(66, 66, 66, 0.85);
+}
+.post-box table {
+	width: 100%;
+	font-weight: 100;
+	font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif ! important;
+}
+.post-box .writer {
+	width: 150px;
+}
+.post-box .writer p {
+	margin-block-start: 4px;
+    margin-block-end: 4px;
+}
+.post-box h4 code {
+	font-size: 12px;
+}
+.post-box table p {
+	font-size: 14px;
+}
+.login-name {
+	font-size: 22px;
+}
+.login-name a {
+	color: #000;
+	text-decoration: none;
+}
+.login-name a:hover {
+	color: #822219;
+}
+.postlist {
+	min-height: 100%;
+}
+.postlist .content {
+	padding: 16px;
+}
+.footer {
+	width: 100%;
+	height: 150px;
+	background: rgb(66,66,66);
+	color: #FFF;
+}
+.footer .ft-copyright {
+	width: 100%;
+	height: 100%;
+}
+.footer .ft-copyright tr {
+	height: 100%;
+}
+.footer .ft-copyright tr td {
+	color: #FFF;
+	font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif ! important;
+	font-weight: 100;
+	font-size: 14px;
+	padding-top: 16px;
+}
+.footer .ft-copyright tr td p {
+	padding-left: 32px;
+	padding-right: 32px;
+}
+.viewpost {
+	min-height: 100%;
+}
+.viewpost .content {
+	padding: 32px;
+	padding-top: 0px;
+}
+.thread img {
+	vertical-align: text-bottom ! important;
+	max-width: 100% ! important;
+	margin-top: 8px;
+	margin-bottom: 8px;
+}
+.thread table {
+	display: block;
+	width: 100%;
+	overflow: auto;
+	margin-bottom: 8px;
+}
+.thread table tr {
+	background-color: #fff;
+	border-top: 1px solid #c6cbd1;
+}
+.thread table tr:nth-child(2n) {
+	background-color: #f6f8fa;
+}
+.thread table th, .thread table td {
+	padding: 6px 13px;
+	border: 1px solid #dfe2e5;
+	font-size: 14px;
+}
+.thread pre {
+	margin-bottom: 16px;
+}
+.threadtitle {
+	width: 100%;
+}
+.threadtitle tr td {
+	font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif ! important;
+	font-weight: 100;
+}
+.threadtitle tr td img {
+	border-radius: 50%;
+	vertical-align: top;
+	height: 70px;
+}
+.threadtitle tr td h3 {
+	margin-top: 12px ! important;
+}
+.threadtitle tr td p {
+	font-size: 14px;
+}
+.reply {
+	width: 100%;
+	min-height: 128px;
+	max-height: 256px;
+	min-width: 100%;
+	max-width: 100%;
+}
+.signature {
+	width: 100%;
+	min-height: 128px;
+	max-height: 256px;
+	min-width: 100%;
+	max-width: 100%;
+	overflow-y: auto;
+}
+.signature img {
+	max-height: 100%;
+}
+.signdisplay {
+	width: 100%;
+	max-height: 180px;
+	overflow: hidden;
+}
+.reply-txt {
+	position: relative;
+    top: 3px;
+	margin-right: 8px;
+}
+#chatlist table {
+	width: 100%;
+}
+#chatlist table tr {
+	margin: 8px;
+}
+#chatlist table tr .headimg {
+	width: 80px;
+	vertical-align: top;
+	padding-bottom: 8px;
+}
+#chatlist table tr .headimg img {
+	border-radius: 50%;
+	transition-duration: 1s;
+}
+#chatlist table tr .headimg img:hover {
+	transform: rotate(360deg);
+	transition-delay: 0.2s;
+	transition-duration: 1s;
+	box-shadow: 0px 0px 16px rgba(0,0,0,0.3);
+}
+#chatlist {
+	display: none;
+}
+#chatlist .chat-content {
+	font-size: 15px;
+	font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif;
+}
+.chat-content {
+	word-break: break-all;
+}
+.chat-content img {
+	vertical-align: text-bottom ! important;
+	max-width: 100% ! important;
+	margin-top: 8px;
+}
+.chat-content table {
+	display: block;
+	width: 100%;
+	overflow: auto;
+	margin-bottom: 8px;
+}
+.chat-content table tr {
+	background-color: #fff;
+	border-top: 1px solid #c6cbd1;
+}
+.chat-content table tr:nth-child(2n) {
+	background-color: #f6f8fa;
+}
+.chat-content table th, .chat-content table td {
+	padding: 6px 13px;
+	border: 1px solid #dfe2e5;
+}
+.newpost {
+	width: 100%;
+	min-height: 320px;
+	max-height: 200%;
+	min-width: 100%;
+	max-width: 100%;
+}
+.admin-reply {
+	vertical-align: top;
+	width: 110px;
+	font-size: 14px;
+	text-align: center;
+}
+.selectnode {
+	padding-top: 16px;
+	padding-bottom: 0px;
+	padding-left: 32px;
+	padding-right: 32px;
+}
+.post-a {
+	color: #000;
+	text-decoration: none ! important;
+}
+.to_top {
+	background-image: url(https://cdn.tcotp.cn:4443/images/xjj.png);
+    background-repeat: no-repeat;
+    background-size: auto 100%;
+    width: 150px;
+    height: 215px;
+    position: fixed;
+    bottom: 0px;
+    right: 0px;
+    z-index: 1;
+    cursor: pointer ! important;
+    opacity: 0.2;
+    transition-duration: 0.5s;
+}
+.to_top:hover {
+	opacity: 1;
+}
+.admin-control {
+	width: 45px;
+	text-align: center;
+}
+.nodename {
+	font-size: 12px;
+}
+usergroup {
+    padding: 2px 4px;
+    font-size: 90%;
+    color: #333;
+    background-color: rgba(0,0,0,0.05);
+    border-radius: 4px;
+	margin-right: 2px;
+	font-family: '微软雅黑',Menlo,Monaco,Consolas,"Courier New",monospace;
+}

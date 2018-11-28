@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 禁止手机端缩放 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <!-- Bootstrap -->
+    <link href="/css/bootstrap.css" rel="stylesheet">
+    <link href="/css/font-awesome.css" rel="stylesheet">
+    <link href="/css/animate.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
+    <script src="/js/hm.js"></script><script src="/js/jquery.js"></script>
+    <script src="/js/bootstrap.js"></script>
+    <script src="/js/smooth-scroll.js"></script>
+    <script type="text/javascript" src="/showdown/dist/showdown.min.js"></script>
+    <title>修改评论内容</title>
+</head>
+<body>
+    {include file="public:header"}
+    <!-- 编辑器 -->
+    <div class="col-sm-9 postlist">
+        <div class="content">
+                <form style="margin-bottom: 50px;" enctype="multipart/form-data" action="/doedit_reply" method="post" >
+                    <input type="hidden" name="id" value="{$data.id}">
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">评 论 内 容</label>
+                        <textarea id="content" class="form-control" name="content" rows="20" onkeyup="compile()">{$data.content}</textarea>
+                    </div>
+                    <button type="submit" class="btn btn-danger">发 布</button>
+                </form>
+            <button type="button" class="btn btn-danger" onclick="compile();">预览</button>
+            <div id="result" style="margin-bottom: 100px;margin-top: 20px;"></div>
+        </div>
+    </div>
+    <!-- 编辑器结束 -->
+    {include file="public:footer"}
+
+    <script type="text/javascript">
+        function compile(){
+            var text = document.getElementById("content").value;
+            var converter = new showdown.Converter();
+            var html = converter.makeHtml(text);
+            document.getElementById("result").innerHTML = html;
+        }
+        </script>
+</body>
+</html>

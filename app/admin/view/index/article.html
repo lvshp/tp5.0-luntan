@@ -1,0 +1,189 @@
+<html>
+<head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=11">
+        <meta name="application-name" content="ZeroDream">
+        <meta name="msapplication-TileColor" content="#F1F1F1">
+        <meta name="description" content="">
+        <meta name="google-site-verification" content="uHNLZ4EM4Cfxsw4PCW3_ESvZXJUAxqRzh4chJDEHJPc">
+        <meta name="baidu-site-verification" content="PruVNLBpoj">
+        <meta name="keywords" content="">
+        <title>{$article.title}</title>
+        <link href="/css/bootstrap.css" rel="stylesheet">
+        <link href="/css/font-awesome.css" rel="stylesheet">
+        <link href="/css/animate.css" rel="stylesheet">
+        <link href="/css/style.css" rel="stylesheet">
+        <script src="/js/hm.js"></script><script src="/js/jquery.js"></script>
+        <script src="/js/bootstrap.js"></script>
+        <script src="/js/smooth-scroll.js"></script>
+        <script type="text/javascript" src="/showdown/dist/showdown.min.js"></script>
+        <!--<script src="/content/ZeroDream/js/instantclick.min.js" data-no-instant></script>-->
+        <script>
+            var _hmt = _hmt || [];
+            (function() {
+              var hm = document.createElement("script");
+              hm.src = "https://hm.baidu.com/hm.js?95dc5602bc7aff740dbdb48d5342d3ba";
+              var s = document.getElementsByTagName("script")[0]; 
+              s.parentNode.insertBefore(hm, s);
+            })();
+            function to_top() {
+                window.scroll({ top: 0, left: 0, behavior: 'smooth' });
+            }
+        </script>
+</head>
+<body>
+    {include file="public:header"}
+    <!-- 帖子开始 -->
+    <div class="col-sm-9 postlist">
+        <div class="content">
+            <table class="threadtitle">
+                <tbody>
+                    <tr>
+                        <td style="width: 90px;">
+                            {if condition="$user.photo neq null"}
+                            <img src="{$user.photo}" class="hdimg">
+                            {else/}
+                            <img src="/image/default.jpeg" class="hdimg">
+                            {/if}
+                        </td>
+                        <td>
+                            <h3>{$article.title}</h3>
+                            <p><a href="/user/Akkariin" target="_blank">{$user.nickname}</a> 发表于 {$article.time} | 查看：{$article.view}</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <hr>
+            <div class="thread">
+                <div id="content">{$article.content}</div>
+                <p><small>{$user.nickname} 在 {$article.time} 发表了帖子</small></p>
+            </div>
+                
+            <hr>
+            <div class="signdisplay thread">
+                <p>云中人论坛开发者<br><a target="_blank" href="#"></a><br></p>
+            </div>
+            <hr>
+            <p><b>发表你的评论</b></p>
+            <p>回帖时请注意遵守论坛发言规定，请勿恶意灌水。</p>
+            <p>
+                <textarea class="form-control reply" id="chat" oninput="checkReplyLength()"></textarea>
+            </p>
+            <p class="text-right">
+                <span class="reply-txt" style="float: left"><input type="checkbox" id="desc" onclick="getChatList(0, tid)" checked="">&nbsp;&nbsp;回帖倒序排列</span>
+                <span class="reply-txt">您还可以输入 <span id="replylength">2000</span> 字</span>
+                {if condition="$Think.session.USER_INFO neq null"}
+                <button onclick="submitChat()" class="btn btn-danger">发表评论</button>
+                {else/}
+                <a data-toggle="modal" data-target="#login" class="btn btn-danger" href="">登录</a>
+                {/if}
+            </p>
+            <!-- 评论内容 -->
+            <div class="chat-list" id="chatlist" style="display: block;">
+                <table id="chatajax">
+                    <tbody>
+                            {volist name="$reply" id="v"}
+                        <tr>
+                            <td class="headimg">
+                                <a href="#" target="_blank"><img style="width:65px;" src="{$v.photo}"></a>
+                            </td>
+                            <td class="chatbox">
+                                <p>
+                                    <small style="color: #aaa;">
+                                        <usergroup>论坛创始者</usergroup> <a href="javascript:void(0);" onclick="ate(this)" style="color:#d9534f;">{$v.author}</a> 发表于 {$v.time}
+                                        {if condition="$Think.session.USER_INFO['nickname'] eq $v.author"}
+                                        <a href="/editreply/{$v.id}"><font color="#d9534f;">编辑评论</font></a> | <a href="javascript:void(0);" onclick="delreply({$v.id});"><font color="#d9534f;">删除评论</font></a>
+                                        {/if}
+                                    </small>
+                                </p>
+                                <div class="chat-content">{$v.content}</div>
+                            </td>
+                        </tr>
+                        {/volist}
+                        
+                    </tbody>
+                </table>
+            </div>
+                <input type="hidden" id="tid" value="26">
+                <script>
+                    // InstantClick.init();
+                    var content = document.getElementById('content').innerHTML;
+                    var converter = new showdown.Converter();
+                    var html = converter.makeHtml(content);
+                    document.getElementById("content").innerHTML = html;
+                    var chat_content = $('.chat_content').innerHTML;
+                    console.log(chat_content);
+
+                    // @功能
+                    function ate(obj){
+                        var txt = '@'+obj.innerHTML;
+                        var textarea = $('#chat').val();
+                        $('#chat').val(textarea+'  '+txt);
+                    }
+
+                    // 发表评论
+                    function submitChat(){
+                        var data = $('#chat').val();
+                        $.ajax({
+                        //几个参数需要注意一下
+                            type: "POST",//方法类型
+                            dataType: "json",//预期服务器返回的数据类型
+                            url: "/ajax_reply" ,//url
+                            data: {content:data,author:"{$Think.session.USER_INFO['nickname']}",reply:{$article.id}},
+                            success: function (res) {
+                                console.log(res);//打印服务端返回的数据(调试用)
+                                var converter = new showdown.Converter();
+                                res.content = converter.makeHtml(res.content);
+                                if(res.status == '1'){
+                                    var newhtml = '<tr><td class="headimg pcreplyhead"><a href="/user/大鹏" target="_blank"><img src="'+res.photo+'" style="width:65px;"></a></td><td class="chatbox"><p><small style="color: #aaa;"><usergroup>论坛创始人</usergroup> <a onclick="at(&quot;大鹏&quot;)"><font color="#d9534f;">'+res.nickname+'</font></a> 发表于 '+res.time+' <a href="/editreply/'+res.id+'"><font color="#d9534f;">编辑评论</font></a> | <a href="javascript:void(0); onclick="delreply('+res.id+')"><font color="#d9534f;">删除评论</font></a></small></p><div class="chat-content"><p> '+res.content+'</p></div></td></tr>';
+                                    $("#chatajax tbody").prepend(newhtml);
+                                    $('#chat').val('');
+                                }
+                            },
+                            error : function() {
+                                swal({
+                                    text: "异常",
+                                    icon: "warning",
+                                    buttons: '好的',
+                                })
+                            }
+                        });
+                    }
+
+                    function checkReplyLength(){
+                        var con = $("#chat").val();
+                        var replylength =  2000 - con.length;
+                        $("#replylength").text(replylength);
+                    }
+                    
+                    // 删除评论
+                    function delreply(id){
+                        var id = id;
+                        $.ajax({
+                            type: 'post',
+                            url : '/reply/delreply',
+                            data: {id:id},
+                            success: function(res){
+                                if(res.status == 1){
+                                    swal({
+                                        text: '删除成功',
+                                        icon: "success",
+                                        buttons: '好的',
+                                    })
+                                    .then((willDelete) => {
+                                        if (willDelete) {
+                                            window.location.reload();
+                                        }
+                                    });
+                                }
+                            }
+                        })
+                    }
+                </script>
+        </div>
+    </div>
+    <!-- 帖子结束 -->
+    {include file="public:footer"}
+
+</body>
+</html>

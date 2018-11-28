@@ -1,0 +1,67 @@
+ <!-- 用户信息开始 -->
+    <!-- <div class="col-sm-3 box">
+        <br>
+            <p>欢迎来到 纯仿制社区 论坛！</p>
+            <p>您还没有登录噢 :P</p>
+            <p>登陆以后就可以发帖和回复啦~</p>
+            <p><a href="/openapi/?action=location"><button class="btn btn-danger">立即登录账号</button></a></p>
+    </div> -->
+    {if condition="$Think.session.USER_INFO neq null"}
+    <div class="col-sm-3 box">
+        <center><img src="/image/tx.jpg" class="headimg my">
+        <p class="text-center login-name"><a href="https://bbs.zerodream.net/user">{$Think.session.USER_INFO['nickname']}</a></p></center>
+        <hr>
+        <p>主题数：<code>{$Think.session.USER_INFO['article_num']}</code></p>
+        <p>回复数：<code>{$Think.session.USER_INFO['reply_num']}</code></p>
+        <p>积分数：<code>9</code></p>
+        <p>用户组：萌新</p>
+        <hr>
+        <div id="signature" class="thread" title="双击编辑签名" ondblclick="editsignature()" style="cursor: pointer;">暂时没有签名~</div>
+        <textarea class="form-control signature" id="signature-box" style="display: none;" onblur="submitSign()">暂时没有签名~</textarea>
+    </div>
+    {else /}
+    <div class="col-sm-3 box">
+        <br>
+        <p>欢迎来到 ZeroDream 论坛！</p>
+        <p>您还没有登录噢 :</p>
+        <p>登陆以后就可以发帖和回复啦~</p>
+        <p><a data-toggle="modal" data-target="#login" href=""><button class="btn btn-danger">立即登录账号</button></a></p>
+        <hr>
+    </div>
+    {/if}
+    <script src="/js/signature.js" data-no-instant=""></script>
+    <script type="text/javascript" data-no-instant="">
+        // 兼容 Firefox
+        if (navigator.userAgent.indexOf('Firefox') >= 0) {
+            var height = document.body.clientHeight + "px";
+            $(".container").css({"min-height":height});
+        }
+        // InstantClick.init();
+    </script>
+</div>
+<div class="row">
+    <div class="col-sm-12 footer">
+        <table class="ft-copyright">
+            <tbody><tr>
+                <td style="width: 180px;">
+                    <p>
+                        <img src="/image/logo.png" style="width: 122px;">
+                    </p>
+                </td>
+                <td>
+                    <p>友情链接</p>
+                    <p><a href="https://bbs.zerodream.net/" target="_blank" data-no-instant="">ZeroDream BBS</a></p>
+                    <p><a href="https://www.natfrp.org/" target="_blank" data-no-instant="">Sakura Frp</a></p>
+                    <p><a href="https://www.phpmc.cn/" target="_blank" data-no-instant="">PHPMC 7</a></p>
+                </td>
+                <td class="text-right">
+                    <p>© 2018 社区论坛</p>
+                    <p>本论坛前端使用ZeroDream BBS</p>
+                    <p>框架 ThinkPHP5.0</p>
+                </td>
+            </tr>
+        </tbody></table>
+    </div>
+</div>
+</div>
+<div class="to_top" onclick="to_top()"></div>

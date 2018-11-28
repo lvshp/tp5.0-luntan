@@ -1,0 +1,71 @@
+<!--documtype html-->
+<html><head>
+    <!--<meta name="theme-color" content="#FFAABD">-->
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1.0" />-->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=11">
+    <meta name="application-name" content="ZeroDream">
+    <meta name="msapplication-TileColor" content="#F1F1F1">
+    <meta name="description" content="欢迎访问 ZeroDream 零梦开源交流论坛，这里是一个自由和谐的开源交流社区，同时也是 Sakura Frp 官方交流论坛，我们欢迎所有热爱原创、开源的人加入我们，一起愉快地交流一切有些意思的东西，无论是科技还是游戏。零梦开源交流论坛">
+    <meta name="google-site-verification" content="uHNLZ4EM4Cfxsw4PCW3_ESvZXJUAxqRzh4chJDEHJPc">
+    <meta name="baidu-site-verification" content="PruVNLBpoj">
+    <meta name="keywords" content="TCOTP,NiconicoCraft,Minecraft,Server,服务端,我的世界,服务器,CraftBukkit,CB,Spigot,PaperSpigot,TorchSpigot,Thermos,BungeeCord,SpongeForge,SpongeVanilla,Sponge,WaterFall,GlowStone,Minecraft_Server">
+    <title> 云中社 - 故事分享论坛</title>
+    <link href="/css/bootstrap.css" rel="stylesheet">
+    <link href="/css/font-awesome.css" rel="stylesheet">
+    <link href="/css/animate.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
+    <script src="/js/hm.js"></script><script src="/js/jquery.js"></script>
+    <script src="/js/bootstrap.js"></script>
+    <script src="/js/smooth-scroll.js"></script>
+    <!--<script src="/content/ZeroDream/js/instantclick.min.js" data-no-instant></script>-->
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?95dc5602bc7aff740dbdb48d5342d3ba";
+          var s = document.getElementsByTagName("script")[0]; 
+          s.parentNode.insertBefore(hm, s);
+        })();
+        function to_top() {
+            window.scroll({ top: 0, left: 0, behavior: 'smooth' });
+        }
+    </script>
+</head>
+<body>
+    {include file="public:header"}
+
+        <!-- 帖子开始 -->
+    <div class="col-sm-9 postlist">
+        {volist name="list" id="v"}
+            <center><p></p></center>
+            <a href="/article/{$v.id}" class="post-a">
+                <div class="post-box">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <h4>{$v.title}</h4>
+                                    <p><font size="2">{$v.content}</font></p>
+                                    <small class="nodename"><usergroup>公告</usergroup>&nbsp;&nbsp;<code>置顶</code></small>
+                                </td>
+                                <td class="writer">
+                                    <p><a href="https://bbs.zerodream.net/user/KasuganoSoras" target="_blank">{$v.nickname}</a></p>
+                                    <p>{$v.time}</p>
+                                    <p>{$v.view} / 26</p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </a>
+        {/volist}
+        <br>
+        <div class="text-right">
+            {$page}
+        </div>
+    </div>
+    <!-- 帖子结束 -->
+    {include file="public:footer"}
+</body>
+</html>
